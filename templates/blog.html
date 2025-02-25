@@ -1,0 +1,25 @@
+{% extends"base.html" %}
+
+
+{% block content %}
+    <h1>Blog</h1>
+    <div class="container">
+    {% for blog in blogs %}
+        <div class="block" >
+            <h3>{{ blog.title }}</h3>
+            <p> By: {{ blog.username }}</p>
+            <p>{{ blog.content }}</p>
+            <p>Tag: {{ blog.tag }}</p>
+            {% if blog.username == current_user.username %}
+                <a style="color: red;" href="/delete_blog/{{ blog._id }}">Delete</a>
+            {% endif %}
+            {% if errors %}
+                <span style="color: red;">[{{ errors }}]</span><br>
+            {% endif %}
+        </div>
+    {% endfor %}
+    </div>
+    <h6>Crete your blog <a href="/create_blog">click</a></h6>
+    
+
+{% endblock %}

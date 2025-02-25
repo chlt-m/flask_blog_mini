@@ -1,0 +1,28 @@
+body{
+    background-color: rgb(247, 250, 209);
+    text-align: center;
+}
+
+#nav-link{
+    background-color: rgb(165, 172, 74);
+}
+
+#title{
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap; /* ให้ block ย้ายไปแถวถัดไปเมื่อพื้นที่ไม่พอ */
+    justify-content: center; /* จัดเรียงให้อยู่ตรงกลางจากซ้ายไปขวา */
+    gap: 20px; /* ระยะห่างระหว่าง block */
+    padding: 20px; /* เพิ่มระยะห่างภายใน container */
+}
+
+.block {
+    width: 400px; /* กำหนดขนาดของแต่ละ block */
+    background-color: rgb(255, 255, 255);
+    border: 1px solid black;
+    padding: 10px;
+    box-sizing: border-box; /* ให้รวมขนาด padding และ border เข้าไป */
+}
