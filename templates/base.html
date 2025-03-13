@@ -42,10 +42,19 @@
             </ul>
             <ul class="d-flex">
               <li class="">
-                <!-- if login show logout if logout show login and registers -->
+                <!-- if login show logout if logout show login and registers -->  
               </li>
             </ul>
         </div>
+        {% if current_user.is_authenticated %}  
+          <div class="d-flex">
+            <a href="/logout">logout</a>
+          </div>
+        {% else %}
+          <div class="d-flex">
+            <a href="/login">login</a>
+          </div>
+        {% endif %}
       </nav>
       <div  id="content">{% block content %}{% endblock %}</div>
       

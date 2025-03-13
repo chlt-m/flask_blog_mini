@@ -11,7 +11,10 @@
             <p>{{ blog.content }}</p>
             <p>Tag: {{ blog.tag }}</p>
             {% if blog.username == current_user.username %}
-                <a style="color: red;" href="/delete_blog/{{ blog._id }}">Delete</a>
+                <form action="/delete_blog/{{ blog._id }}" method="post">
+                    <button>Delete</button>
+                </form>
+                <a style="color: rgb(90, 89, 89);" href="/edit_blog/{{ blog._id }}" >Edit</a>
             {% endif %}
             {% if errors %}
                 <span style="color: red;">[{{ errors }}]</span><br>
