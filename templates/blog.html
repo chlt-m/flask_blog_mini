@@ -1,28 +1,31 @@
-{% extends"base.html" %}
-
+{% extends "base.html" %}
 
 {% block content %}
-    <h1>Blog</h1>
-    <div class="container">
+<h1 class="mb-4">Blog</h1>
+<div class="row g-4">
     {% for blog in blogs %}
-        <div class="block" >
-            <h3>{{ blog.title }}</h3>
-            <p> By: {{ blog.username }}</p>
-            <p>{{ blog.content }}</p>
-            <p>Tag: {{ blog.tag }}</p>
-            {% if blog.username == current_user.username %}
-                <form action="/delete_blog/{{ blog._id }}" method="post">
-                    <button>Delete</button>
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">{{ blog.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">By: {{ blog.username }}</h6>
+                <p class="card-text">{{ blog.content }}</p>
+                <p><span class="badge bg-secondary">{{ blog.tag }}</span></p>
+                {% if blog.username == current_user.username %}
+                <form action="/delete_blog/{{ blog._id }}" method="post" class="d-inline">
+                    <button class="btn btn-danger btn-sm">Delete</button>
                 </form>
-                <a style="color: rgb(90, 89, 89);" href="/edit_blog/{{ blog._id }}" >Edit</a>
-            {% endif %}
-            {% if errors %}
-                <span style="color: red;">[{{ errors }}]</span><br>
-            {% endif %}
+                <a class="btn btn-secondary btn-sm" href="/edit_blog/{{ blog._id }}">Edit</a>
+                {% endif %}
+                {% if errors %}
+                <div class="text-danger mt-2">[{{ errors }}]</div>
+                {% endif %}
+            </div>
         </div>
-    {% endfor %}
     </div>
-    <h6>Crete your blog <a href="/create_blog">click</a></h6>
-    
-
+    {% endfor %}
+</div>
+<div class="mt-4">
+    <a class="btn btn-success" href="/create_blog">Create your blog</a>
+</div>
 {% endblock %}
