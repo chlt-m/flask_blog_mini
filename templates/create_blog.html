@@ -1,24 +1,32 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="mb-4">Create Blog</h1>
-<form method="post" class="mx-auto" style="max-width: 600px;">
-    {{ form.hidden_tag() }}
-    <div class="mb-3">
+<div class="card mx-auto" style="max-width: 700px;">
+  <div class="card-body">
+    <h1 class="card-title mb-3">Create Blog</h1>
+    <p class="text-muted">Use the form below to publish a new article. Provide a descriptive title, detailed content and an optional tag to categorize your post.</p>
+    <form method="post">
+      {{ form.hidden_tag() }}
+      <div class="mb-3">
         {{ form.title.label(class="form-label") }}
-        {{ form.title(class="form-control") }}
-    </div>
-    <div class="mb-3">
+        {{ form.title(class="form-control", placeholder="Catchy title") }}
+        <div class="form-text">Keep it short and descriptive.</div>
+      </div>
+      <div class="mb-3">
         {{ form.content.label(class="form-label") }}
-        {{ form.content(class="form-control") }}
-    </div>
-    <div class="mb-3">
+        {{ form.content(class="form-control", rows=6, placeholder="Share your story...") }}
+        <div class="form-text">Write the main body of your blog post.</div>
+      </div>
+      <div class="mb-3">
         {{ form.tag.label(class="form-label") }}
-        {{ form.tag(class="form-control") }}
-    </div>
-    {% if errors %}
-    <div class="text-danger mb-3">{{ errors }}</div>
-    {% endif %}
-    {{ form.submit(class="btn btn-success") }}
-</form>
+        {{ form.tag(class="form-control", placeholder="e.g. travel, tech") }}
+        <div class="form-text">Optional: add a tag to help categorize your post.</div>
+      </div>
+      {% if errors %}
+      <div class="text-danger mb-3">{{ errors }}</div>
+      {% endif %}
+      {{ form.submit(class="btn btn-primary") }}
+    </form>
+  </div>
+</div>
 {% endblock %}
