@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import StringField, PasswordField, SubmitField, TextAreaField
 
 class LoginForm(FlaskForm):
     username = StringField('Username')
@@ -14,6 +14,6 @@ class RegisterForm(FlaskForm):
 
 class blogForm(FlaskForm):
     title = StringField('Title')
-    content = StringField('Content')
+    content = TextAreaField('Content')
     tag = StringField('Tag')
     submit = SubmitField('Submit')
